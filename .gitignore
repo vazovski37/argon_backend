@@ -1,0 +1,13 @@
+# --- Python Backend ---
+venv/
+__pycache__/
+*.pyc
+.env
+.pytest_cache/
+
+# --- System & IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

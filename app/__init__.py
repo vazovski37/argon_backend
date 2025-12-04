@@ -25,6 +25,7 @@ def create_app(config_class=Config):
     from app.api.quests import quests_bp
     from app.api.photos import photos_bp
     from app.api.rag import rag_bp
+    from app.api.groups import groups_bp
     
     app.register_blueprint(auth_bp, url_prefix='/api/auth')
     app.register_blueprint(game_bp, url_prefix='/api/game')
@@ -32,6 +33,7 @@ def create_app(config_class=Config):
     app.register_blueprint(quests_bp, url_prefix='/api/quests')
     app.register_blueprint(photos_bp, url_prefix='/api/photos')
     app.register_blueprint(rag_bp, url_prefix='/api/rag')
+    app.register_blueprint(groups_bp, url_prefix='/api/groups')
     
     # Health check endpoint
     @app.route('/health')

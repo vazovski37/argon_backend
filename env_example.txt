@@ -1,0 +1,40 @@
+# Copy this file to .env and fill in your values
+# Flask Configuration
+FLASK_ENV=development
+SECRET_KEY=your-secret-key-change-in-production
+JWT_SECRET_KEY=your-jwt-secret-key-change-in-production
+
+# Database
+DATABASE_URL=postgresql://postgres:postgres@localhost:5432/argonauts
+
+# Redis
+REDIS_URL=redis://localhost:6379
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your-google-client-id
+GOOGLE_CLIENT_SECRET=your-google-client-secret
+
+# Gemini API (for RAG embeddings)
+GEMINI_API_KEY=your-gemini-api-key
+
+# Google Cloud Storage
+GCS_BUCKET=argonauts-photos
+GCS_PROJECT_ID=your-gcp-project-id
+# Path to service account JSON file (optional if using default credentials)
+GOOGLE_APPLICATION_CREDENTIALS=/path/to/service-account.json
+
+# Vertex AI RAG Configuration
+# GCP Project ID (defaults to GCS_PROJECT_ID if not set)
+GCP_PROJECT_ID=your-gcp-project-id
+# Vertex AI region (e.g., us-central1, europe-west1)
+VERTEX_AI_LOCATION=us-central1
+# Full RAG Corpus resource name from Vertex AI
+# Format: projects/{project}/locations/{location}/ragCorpora/{corpus_id}
+# Find this in Vertex AI Console -> RAG Engine -> Your Corpus -> Resource name
+VERTEX_RAG_CORPUS_NAME=projects/your-project/locations/us-central1/ragCorpora/your-corpus-id
+
+# CORS Origins (comma-separated)
+CORS_ORIGINS=http://localhost:3000,http://localhost:5173
+
+
+

@@ -1,0 +1,33 @@
+# Flask core
+Flask>=3.1.2
+flask-cors>=6.0.1
+Werkzeug>=3.1.4
+
+# Database
+Flask-SQLAlchemy>=3.1.1
+Flask-Migrate>=4.0.5
+psycopg[binary]>=3.2.3
+pgvector>=0.2.5
+
+# Authentication
+Flask-JWT-Extended>=4.6.0
+PyJWT>=2.8.0
+google-auth>=2.29.0
+google-auth-oauthlib>=1.2.0
+
+# RAG / AI
+google-generativeai>=0.5.4
+google-cloud-aiplatform>=1.71.0
+langchain>=0.1.20
+langchain-google-genai>=1.0.3
+chromadb>=0.4.24
+
+# Utils
+python-dotenv>=1.0.1
+marshmallow>=3.21.1
+redis>=5.0.4
+google-cloud-storage>=2.18.2
+
+# Dev
+pytest>=8.1.1
+black>=24.4.0

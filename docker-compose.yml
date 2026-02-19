@@ -6,7 +6,7 @@ services:
     build: .
     container_name: argonauts-backend
     ports:
-      - "5000:5000"
+      - "5000:8080"
     environment:
       - FLASK_ENV=development
       - DATABASE_URL=postgresql://postgres:postgres@db:5432/argonauts
@@ -45,9 +45,10 @@ services:
       - "5432:5432"
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+      interval: 10s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
     restart: unless-stopped
 
   # Redis for caching and sessions

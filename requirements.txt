@@ -30,4 +30,5 @@ google-cloud-storage>=2.18.2
 
 # Dev
 pytest>=8.1.1
-black>=24.4.0gunicorn>=21.2.0
+black>=24.4.0
+gunicorn>=21.2.0

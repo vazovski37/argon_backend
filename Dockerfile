@@ -33,7 +33,7 @@ EXPOSE 8080
 # Workers: 1-2 is usually enough for a demo/small instance. 
 # Threads: 8 allows handling multiple concurrent requests (good for I/O bound tasks like DB/API calls)
 # Timeout: 0 is recommended for Cloud Run to let it handle timeouts
-CMD exec gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 run:app
+CMD exec python -m gunicorn --bind :$PORT --workers 1 --threads 8 --timeout 0 run:app
 
 
 

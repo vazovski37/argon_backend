@@ -29,9 +29,13 @@ class Config:
     # JWT
     JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY', 'jwt-secret-key-change-in-production')
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(days=7)
-    JWT_TOKEN_LOCATION = ['headers']
+    JWT_TOKEN_LOCATION = ['headers', 'cookies']  # accept token from either
     JWT_HEADER_NAME = 'Authorization'
     JWT_HEADER_TYPE = 'Bearer'
+    JWT_ACCESS_COOKIE_NAME = os.getenv('JWT_COOKIE_NAME', 'access_token')
+    JWT_COOKIE_SECURE = os.getenv('FLASK_ENV') == 'production'  # HTTPS only in prod
+    JWT_COOKIE_SAMESITE = 'Lax'
+    JWT_COOKIE_CSRF_PROTECT = False  # disable CSRF check for API-only backend
     
     # Google OAuth
     GOOGLE_CLIENT_ID = os.getenv('GOOGLE_CLIENT_ID', '')

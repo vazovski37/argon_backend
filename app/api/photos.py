@@ -1,7 +1,7 @@
 """
 Photos API
 """
-from flask import Blueprint, request, jsonify, redirect
+from flask import Blueprint, request, jsonify
 from flask_jwt_extended import jwt_required, get_current_user
 from werkzeug.utils import secure_filename
 from app.models.photo import Photo, PhotoVisibility
@@ -297,16 +297,21 @@ def get_photo_feed():
 
 @photos_bp.route('/file/<path:filepath>')
 def serve_photo(filepath: str):
-    """Redirect to the GCS public URL for the photo."""
-    photo = Photo.query.filter_by(file_path=filepath).first()
-    
-    if photo and photo.gcs_url:
-        return redirect(photo.gcs_url)
-    
-    # Fallback: generate URL from filepath
-    from flask import current_app
-    bucket_name = current_app.config.get('GCS_BUCKET', 'argonauts-photos')
-    return redirect(f"https://storage.googleapis.com/{bucket_name}/{filepath}")
+    """Serve a photo directly from local disk."""
+    import os
+    from flask import send_from_directory, current_app
+
+    upload_root = current_app.config.get('UPLOAD_FOLDER', 'uploads')
+    if not os.path.isabs(upload_root):
+        upload_root = os.path.normpath(
+            os.path.join(current_app.root_path, '..', upload_root)
+        )
+
+    # Split blob_path into directory + filename
+    directory = os.path.normpath(os.path.join(upload_root, os.path.dirname(filepath)))
+    filename = os.path.basename(filepath)
+
+    return send_from_directory(directory, filename)
 
 
 

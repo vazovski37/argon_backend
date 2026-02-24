@@ -46,6 +46,7 @@ class Config:
     # File uploads
     UPLOAD_FOLDER = os.getenv('UPLOAD_FOLDER', 'uploads')
     MAX_CONTENT_LENGTH = 16 * 1024 * 1024  # 16MB max file size
+    BASE_URL = os.getenv('BASE_URL', 'http://localhost:5000')  # used for local photo URLs
     
     # Google Cloud Storage
     GCS_BUCKET = os.getenv('GCS_BUCKET', 'argonauts-photos')
